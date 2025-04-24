@@ -1,7 +1,7 @@
 
 # Complex Numbers Class in Python
 
-A class that lets you manipulate numbers and even plotting them.
+A class that lets you manipulate complex numbers and even plotting them.
 
 
 ## Screenshots
