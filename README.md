@@ -1,6 +1,6 @@
 # Complex Numbers Class in Python
 
-A class that lets you manipulate numbers and even plotting them.
+A class that lets you manipulate Complex Numbers and even plotting them.
 
 
 ## Screenshots
@@ -14,7 +14,7 @@ A class that lets you manipulate numbers and even plotting them.
 - Conjugate
 - Module
 - Argument
-
+-Basic arithmetic
 
 ## Usage/Examples
 
