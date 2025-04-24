@@ -5,9 +5,13 @@ import numpy as np
 
 class Complex():
     """
-    Main Class.
+    Main Class. 
+    A complex number z is made of:
+    a real part a : Re(z)
+    an imaginary part b : Im(z)
+    such as z=a+ib
+    with i**2 = -1
     """
-
     def __init__(self, real:int, imaginary:int)-> None:
         """
         Constructor method.
@@ -42,6 +46,7 @@ class Complex():
             else:
                 return "z = {}+{}i".format(self.re, self.im)
     
+
     def showAttributes(self)->None:
         """
         List Complex Number attributes.
@@ -50,6 +55,21 @@ class Complex():
                                                                    self.im, self.module(), self.argument()))
         
         return None
+
+
+    def __add__(self, nb)->Any:
+        """
+        Addition for Complex numbers.
+        """
+        return Complex(self.re+nb.re, self.im+nb.im)
+
+
+    def __sub__(self, nb)->Any:
+        """
+        Substraction for Complex numbers.
+        """
+        return Complex(self.re-nb.re, self.im-nb.im)
+    
 
     def module(self, exactValue=True)->Any:
         """
@@ -113,6 +133,7 @@ class Complex():
         closest_fraction = min(fractionsOfPi.keys(), key=lambda x: abs(x - angleInPi))
         return "{} [2π]".format(fractionsOfPi[closest_fraction])
 
+
     def visualize(self)->None:
         """
         Plot Complex Number using matplotlib
@@ -167,5 +188,3 @@ class Complex():
         plt.show()
 
         return None
-
-nb = Complex(9,8)
