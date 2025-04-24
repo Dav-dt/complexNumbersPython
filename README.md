@@ -15,6 +15,8 @@ A class that lets you manipulate complex numbers and even plotting them.
 - Conjugate
 - Module
 - Argument
+- Plot visualization
+- basic arithmetic
 
 
 ## Usage/Examples
