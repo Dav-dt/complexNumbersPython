@@ -51,9 +51,11 @@ class Complex():
         """
         List Complex Number attributes.
         """
-        print("Re(z)= {} \nIm(z)= {} \n|z|= {}\nArg(z)= {}".format(self.re,
-                                                                   self.im, self.module(), self.argument()))
-        
+        print("Re(z)= {} \nIm(z)= {} \n|z|= {}\nArg(z)= {} \n" \
+        "Trig: z= {}(cos({})+isin({}))".format(self.re, self.im, self.module(),
+                                             self.argument(),self.module(),
+                                             self.argument()[:3],self.argument()[:3]))
+
         return None
 
 
@@ -70,6 +72,15 @@ class Complex():
         """
         return Complex(self.re-nb.re, self.im-nb.im)
     
+    def __mul__(self, nb)->Any:
+        """
+        Multiplication for Complex Numbers.
+        """
+        real = self.re*nb.re- self.im*nb.im
+        imag = self.re*nb.im+ self.im*nb.re
+        
+        return Complex(real, imag)
+
 
     def module(self, exactValue=True)->Any:
         """
@@ -99,8 +110,8 @@ class Complex():
         If exactValue is False, it returns int
         otherwise returns str
         """
-        cos = self.re / self.module(exactValue=False)
-        sin = self.im / self.module(exactValue=False)
+        cos = self.re/ self.module(exactValue=False)
+        sin = self.im/ self.module(exactValue=False)
         angle = math.atan2(sin, cos)
         if not exactValue:
             return angle
@@ -155,8 +166,8 @@ class Complex():
         plt.plot(self.re, self.im, "ro")
         plt.plot([self.re, self.re], [0, self.im], "k--")
         plt.plot([0, self.re], [self.im, self.im], "k--")
-        plt.text(self.re, -1, "Re = {}".format(self.re), ha="center", fontsize=10, color="black")
-        plt.text(0.5, self.im+0.5, "Im = {}".format(self.im), va="center", fontsize=10, color="black")
+        plt.text(self.re, -1, "Re(z) = {}".format(self.re), ha="center", fontsize=10, color="black")
+        plt.text(0.5, self.im+0.5, "Im(z) = {}".format(self.im), va="center", fontsize=10, color="black")
         plt.text(self.re + 0.2, self.im + 0.2,
                 "({}, {})".format(self.re, self.im),
                 color="red", fontsize=10)
