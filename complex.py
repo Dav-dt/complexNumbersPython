@@ -12,7 +12,7 @@ class Complex():
     such as z=a+ib
     with i**2 = -1
     """
-    def __init__(self, real:int, imaginary:int)-> None:
+    def __init__(self, real: int, imaginary: int) -> None:
         """
         Constructor method.
         """
@@ -23,7 +23,7 @@ class Complex():
         return None
     
 
-    def __str__(self)-> str:
+    def __str__(self) -> str:
         """
         Displays the Complex Number.
         """
@@ -52,30 +52,38 @@ class Complex():
         List Complex Number attributes.
         """
         print("Re(z)= {} \nIm(z)= {} \n|z|= {}\nArg(z)= {} \n" \
-        "Trig: z= {}(cos({})+isin({}))".format(self.re, self.im, self.module(),
+        "Trig: z= {}(cos({})+isin({})) \nExp: {}exp(i{})".format(
+                                            self.re, self.im, self.module(),
                                              self.argument(),self.module(),
-                                             self.argument()[:3],self.argument()[:3]))
+                                             self.argument()[:3],self.argument()[:3],
+                                             self.module(),self.argument()[:3]))
 
         return None
 
 
-    def __add__(self, nb)->Any:
+    def __add__(self, nb) -> Any:
         """
         Addition for Complex numbers.
+        nb : Type Complex
+        returns Type: Complex
         """
         return Complex(self.re+nb.re, self.im+nb.im)
 
 
-    def __sub__(self, nb)->Any:
+    def __sub__(self, nb) -> Any:
         """
         Substraction for Complex numbers.
+        nb : Type Complex
+        returns Type: Complex
         """
         return Complex(self.re-nb.re, self.im-nb.im)
 
-    
-    def __mul__(self, nb)->Any:
+
+    def __mul__(self, nb) -> Any:
         """
         Multiplication for Complex Numbers.
+        nb : Type Complex
+        returns Type: Complex
         """
         real = self.re*nb.re- self.im*nb.im
         imag = self.re*nb.im+ self.im*nb.re
@@ -87,7 +95,7 @@ class Complex():
         """
         Gets module of Complex Number.
         if exactValue is False, it returns an int
-        otherwhise returns str
+            otherwhise returns str
         """
         partialMod = self.re**2 + self.im**2
         if not exactValue:
@@ -98,18 +106,19 @@ class Complex():
         return "{}".format(math.sqrt(partialMod)).replace(".0","")
     
 
-    def conjugate(self)->str:
+    def conjugate(self) -> Any:
         """
-        Gets the conjugate of the Complex Number.
+        Get conjugate of Complex Number.
+        Returns TYPE: Complex
         """
-        return Complex(self.re, -self.im).__str__()
+        return Complex(self.re, -self.im)
     
 
-    def argument(self, exactValue=True)->Any:
+    def argument(self, exactValue: bool=True) -> str:
         """
         Gets argument of the complex Number.
         If exactValue is False, it returns int
-        otherwise returns str
+            otherwise returns str
         """
         cos = self.re/ self.module(exactValue=False)
         sin = self.im/ self.module(exactValue=False)
@@ -146,9 +155,9 @@ class Complex():
         return "{} [2π]".format(fractionsOfPi[closest_fraction])
 
 
-    def visualize(self)->None:
+    def visualize(self) -> None:
         """
-        Plot Complex Number using matplotlib
+        Plot Complex Number using matplotlib.
         """
         plt.clf()
         plt.get_current_fig_manager().set_window_title("Complex Visualization")
